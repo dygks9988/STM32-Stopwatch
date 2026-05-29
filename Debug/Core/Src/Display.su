@@ -1,0 +1,2 @@
+../Core/Src/Display.c:10:6:LED_replace	4	static
+../Core/Src/Display.c:16:6:SEG_replace	4	static

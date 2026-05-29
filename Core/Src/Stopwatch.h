@@ -1,0 +1,33 @@
+/*
+ * Stopwatch.h
+ *
+ *  Created on: May 29, 2026
+ *      Author: PC
+ */
+
+
+#ifndef STOPWATCH_H_
+#define STOPWATCH_H_
+
+#include "stm32f4xx_hal.h"
+
+
+extern volatile uint8_t ten_ms_cnt;
+
+extern volatile uint8_t sec_cnt;
+extern volatile uint8_t sec_flag;
+
+extern volatile uint8_t min_cnt;
+extern volatile uint8_t min_flag;
+
+extern volatile uint8_t hour_cnt;
+extern volatile uint8_t hour_flag;
+
+
+void stopwatch_Init();
+void stopwatch_counter();
+
+
+#endif /* STOPWATCH_H_ */
+
+
