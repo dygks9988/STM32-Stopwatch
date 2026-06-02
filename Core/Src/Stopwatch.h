@@ -9,8 +9,7 @@
 #ifndef STOPWATCH_H_
 #define STOPWATCH_H_
 
-#include "stm32f4xx_hal.h"
-
+#include "main.h"
 
 extern volatile uint8_t ten_ms_cnt;
 
@@ -24,7 +23,7 @@ extern volatile uint8_t hour_cnt;
 extern volatile uint8_t hour_flag;
 
 
-void stopwatch_Init();
+void stopwatch_Init(TIM_HandleTypeDef *htim);
 void stopwatch_counter();
 
 

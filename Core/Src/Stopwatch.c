@@ -1,8 +1,6 @@
 
 #include "Stopwatch.h"
-#include "stm32f4xx_hal.h"
-
-
+#include "main.h"
 
 volatile uint8_t ten_ms_cnt;
 volatile uint8_t sec_cnt;
@@ -12,8 +10,13 @@ volatile uint8_t min_flag;
 volatile uint8_t hour_cnt;
 volatile uint8_t hour_flag;
 
+#define TICK_PER_SEC 100
+#define SEC_PER_MIN 60
+#define MIN_PER_HOUR 60
 
-void stopwatch_Init(){
+static TIM_HandleTypeDef* TIM_Handle;
+
+void stopwatch_Init(TIM_HandleTypeDef *htim){
 ten_ms_cnt = 0;
 
 sec_flag = 0;
@@ -24,23 +27,25 @@ min_flag =0;
 
 hour_cnt = 0;
 hour_flag = 0;
+
+TIM_Handle = htim;
 }
 
 void stopwatch_counter(){
 	ten_ms_cnt++;
-	if (ten_ms_cnt >=100)    //1초
+	if (ten_ms_cnt >=TICK_PER_SEC)
 	{
 		ten_ms_cnt =0;
-		sec_flag++;
+		sec_flag++; //타이머 콜백에서 FALG만 띄움 (메인루프 최적화)
 		sec_cnt++;
 
-		if(sec_cnt >= 60) // 60초
+		if(sec_cnt >= SEC_PER_MIN)
 		{
 			sec_cnt = 0;
 			min_flag++;
 			min_cnt++;
 
-			if(min_cnt >= 60) // 60분
+			if(min_cnt >= MIN_PER_HOUR)
 			{
 				min_cnt = 0;
 				hour_flag++;
@@ -49,3 +54,12 @@ void stopwatch_counter(){
 		}
 	}
 }
+
+
+
+HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	if (TIM_Handle == htim)
+	stopwatch_counter();
+}
+

@@ -1,0 +1,2 @@
+../Core/Src/communication.c:12:6:UART_RX_TIM2_Init	16	static
+../Core/Src/communication.c:16:6:HAL_UART_RxCpltCallback	16	static

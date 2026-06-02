@@ -1,0 +1,2 @@
+../Core/Src/communication.c:12:6:UART_RX_TIM2_Init	1
+../Core/Src/communication.c:16:6:HAL_UART_RxCpltCallback	3
