@@ -16,8 +16,8 @@ extern volatile uint8_t RX_data;
 extern volatile uint8_t Command_flag;
 
 void UART_RX_flag();
-void UART_RX_TIM2_Init(UART_HandleTypeDef*);
-
+void UART_RX_stopwatch_Init(UART_HandleTypeDef*);
+void Command_execute();
 
 
 

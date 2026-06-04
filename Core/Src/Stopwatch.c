@@ -14,7 +14,7 @@ volatile uint8_t hour_flag;
 #define SEC_PER_MIN 60
 #define MIN_PER_HOUR 60
 
-static TIM_HandleTypeDef* TIM_Handle;
+TIM_HandleTypeDef* TIM_Handle;
 
 void stopwatch_Init(TIM_HandleTypeDef *htim){
 ten_ms_cnt = 0;

@@ -24,8 +24,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <string.h>
 #include "Stopwatch.h"
+#include "communication.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -78,6 +78,7 @@ int main(void)
 
   /* USER CODE BEGIN Init */
   stopwatch_Init(&htim1);
+  UART_RX_stopwatch_Init(&huart2);
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -93,23 +94,23 @@ int main(void)
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim1);
-
+  HAL_UART_Receive_IT(&huart2, &RX_data, 1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
-  {
+  {if(sec_flag != 0){
+ 	 HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+ 	 sec_flag =0;
+ 	 //LED_replace();
+  }
+  if(Command_flag != 0){
+ 	 Command_execute();
+
+  }
+
     /* USER CODE END WHILE */
-     if(sec_flag != 0)
-     {
-    	 HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-    	 sec_flag =0;
-    	 LED_replace();
-     }
-
-
-
 
     /* USER CODE BEGIN 3 */
   }
