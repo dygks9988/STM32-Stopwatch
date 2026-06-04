@@ -4,13 +4,13 @@
 #include "Stopwatch.h"
 
 static UART_HandleTypeDef* UART_Handler;
-volatile uint8_t RX_data;
 volatile uint8_t RX_buf[50];
 volatile uint8_t Command_flag;
+uint8_t RX_data;
 
 volatile static uint8_t RX_index;
 
-
+static char TX_BUF[50];
 
 
 void UART_RX_stopwatch_Init(UART_HandleTypeDef* huart){
@@ -27,6 +27,11 @@ void Command_execute(){
 	if(strncmp((const char *)RX_buf,"start",5) == 0){
 		HAL_TIM_Base_Start_IT(TIM_Handle);
 	}
+	Command_flag = 0;
+	if(strncmp((const char *)RX_buf,"get_time",8) == 0){
+		    sprintf(TX_BUF,"\n%02d:%02d:%02d\n",hour_cnt,min_cnt,sec_cnt);
+			HAL_UART_Transmit(UART_Handler,(const uint8_t*)TX_BUF,strlen(TX_BUF),10);
+		}
 	Command_flag = 0;
 }
 

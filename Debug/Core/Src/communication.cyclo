@@ -1,4 +1,4 @@
 ../Core/Src/communication.c:16:6:UART_RX_stopwatch_Init	1
-../Core/Src/communication.c:23:6:Command_execute	3
-../Core/Src/communication.c:34:6:HAL_UART_RxCpltCallback	3
-../Core/Src/communication.c:58:6:HAL_UART_ErrorCallback	2
+../Core/Src/communication.c:23:6:Command_execute	4
+../Core/Src/communication.c:39:6:HAL_UART_RxCpltCallback	3
+../Core/Src/communication.c:63:6:HAL_UART_ErrorCallback	2

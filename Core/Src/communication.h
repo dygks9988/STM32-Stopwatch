@@ -12,7 +12,7 @@
 
 
 extern volatile uint8_t RX_buf[50];
-extern volatile uint8_t RX_data;
+extern uint8_t RX_data;
 extern volatile uint8_t Command_flag;
 
 void UART_RX_flag();
