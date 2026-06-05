@@ -11,21 +11,25 @@
 
 #include "main.h"
 
-extern volatile uint8_t ten_ms_cnt;
 
-extern volatile uint8_t sec_cnt;
-extern volatile uint8_t sec_flag;
+extern volatile uint8_t sw_flag;
 
-extern volatile uint8_t min_cnt;
-extern volatile uint8_t min_flag;
+typedef struct{
+	volatile uint8_t ten_ms_cnt;
 
-extern volatile uint8_t hour_cnt;
-extern volatile uint8_t hour_flag;
+	volatile uint8_t sec_cnt;
+	volatile uint8_t sec_flag;
 
-extern TIM_HandleTypeDef* TIM_Handle;
+	volatile uint8_t min_cnt;
+	volatile uint8_t min_flag;
 
-void stopwatch_Init(TIM_HandleTypeDef *htim);
-void stopwatch_counter();
+	volatile uint8_t hour_cnt;
+	volatile uint8_t hour_flag;
+}Stop_watchTypedef;
+
+
+void stopwatch_Init(Stop_watchTypedef* sw);
+void stopwatch_counter(Stop_watchTypedef* sw);
 
 
 #endif /* STOPWATCH_H_ */

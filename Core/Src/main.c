@@ -30,7 +30,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+Stop_watchTypedef mytimer1;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -75,10 +75,9 @@ int main(void)
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-
   /* USER CODE BEGIN Init */
-  stopwatch_Init(&htim1);
-  UART_RX_stopwatch_Init(&huart2);
+  stopwatch_Init(&mytimer1);
+  UART_RX_stopwatch_Init();
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -100,13 +99,13 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
-  {if(sec_flag != 0){
- 	 HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
- 	 sec_flag =0;
+  {if(sw_flag != 0){
+ 	 stopwatch_counter(&mytimer1);
+ 	 sw_flag = 0;
  	 //LED_replace();
   }
   if(Command_flag != 0){
- 	 Command_execute();
+ 	 Command_execute(&mytimer1);
 
   }
 

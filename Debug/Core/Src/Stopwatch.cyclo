@@ -1,3 +1,3 @@
-../Core/Src/Stopwatch.c:19:6:stopwatch_Init	1
-../Core/Src/Stopwatch.c:34:6:stopwatch_counter	4
-../Core/Src/Stopwatch.c:60:1:HAL_TIM_PeriodElapsedCallback	2
+../Core/Src/Stopwatch.c:14:6:stopwatch_Init	1
+../Core/Src/Stopwatch.c:28:6:stopwatch_counter	4
+../Core/Src/Stopwatch.c:55:1:HAL_TIM_PeriodElapsedCallback	2

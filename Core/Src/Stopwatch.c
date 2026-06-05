@@ -1,55 +1,50 @@
 
 #include "Stopwatch.h"
 #include "main.h"
+#include "tim.h"
 
-volatile uint8_t ten_ms_cnt;
-volatile uint8_t sec_cnt;
-volatile uint8_t sec_flag;
-volatile uint8_t min_cnt;
-volatile uint8_t min_flag;
-volatile uint8_t hour_cnt;
-volatile uint8_t hour_flag;
+
+volatile uint8_t sw_flag;
 
 #define TICK_PER_SEC 100
 #define SEC_PER_MIN 60
 #define MIN_PER_HOUR 60
 
-TIM_HandleTypeDef* TIM_Handle;
 
-void stopwatch_Init(TIM_HandleTypeDef *htim){
-ten_ms_cnt = 0;
+void stopwatch_Init(Stop_watchTypedef* sw){
+sw->ten_ms_cnt = 0;
 
-sec_flag = 0;
-sec_cnt = 0;
+sw->sec_flag = 0;
+sw->sec_cnt = 0;
 
-min_cnt = 0;
-min_flag =0;
+sw->min_cnt = 0;
+sw->min_flag =0;
 
-hour_cnt = 0;
-hour_flag = 0;
+sw->hour_cnt = 0;
+sw->hour_flag = 0;
 
-TIM_Handle = htim;
 }
 
-void stopwatch_counter(){
-	ten_ms_cnt++;
-	if (ten_ms_cnt >=TICK_PER_SEC)
+void stopwatch_counter(Stop_watchTypedef* sw){
+	sw->ten_ms_cnt++;
+	if ((sw->ten_ms_cnt) >= TICK_PER_SEC)
 	{
-		ten_ms_cnt =0;
-		sec_flag++; //타이머 콜백에서 FALG만 띄움 (메인루프 최적화)
-		sec_cnt++;
+		sw->ten_ms_cnt = 0;
+		sw->sec_flag++; // 타이머 콜백에서 FALG만 띄움 (메인루프 최적화)
+		sw->sec_cnt++;
+		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
 
-		if(sec_cnt >= SEC_PER_MIN)
+		if((sw->sec_cnt) >= SEC_PER_MIN)
 		{
-			sec_cnt = 0;
-			min_flag++;
-			min_cnt++;
+			sw->sec_cnt = 0;
+			sw->min_flag++;
+			sw->min_cnt++;
 
-			if(min_cnt >= MIN_PER_HOUR)
+			if(sw->min_cnt >= MIN_PER_HOUR)
 			{
-				min_cnt = 0;
-				hour_flag++;
-				hour_cnt++;
+				sw->min_cnt = 0;
+				sw->hour_flag++;
+				sw->hour_cnt++;
 			}
 		}
 	}
@@ -59,7 +54,7 @@ void stopwatch_counter(){
 
 HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	if (TIM_Handle == htim)
-	stopwatch_counter();
+	if (&htim1 == htim)
+	sw_flag = 1;
 }
 
