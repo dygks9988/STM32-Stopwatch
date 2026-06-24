@@ -1,9 +1,0 @@
-진행 상황
-
-1.10ms Tick 비동기 소프트웨어 타이머 및 플래그 제어 검증 완료 (LED 토글 테스트)
-
-문제: TIM1 설정 후 인터럽트 호출 되지 않음. 디버거 확인 결과 ISR 진입 실패. 
-
-해결: HAL_TIM_Base_Start_IT() 함수 호출이 필수임을 파악하고 추가하여 해결.
-
-2.UART_RX PC command start,stop 기능 추가

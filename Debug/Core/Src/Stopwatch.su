@@ -1,3 +1,0 @@
-../Core/Src/Stopwatch.c:14:6:stopwatch_Init	16	static
-../Core/Src/Stopwatch.c:28:6:stopwatch_counter	16	static
-../Core/Src/Stopwatch.c:55:1:HAL_TIM_PeriodElapsedCallback	16	static
