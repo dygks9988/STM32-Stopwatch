@@ -12,5 +12,6 @@
 **1. RTOS task 실행 계층 추가**
 - FreeRTOS Scheduler에 의해 실행되는 Task 코드를 scheduler 계층으로 분리했습니다
 - 해당 계층에 stopwatch_task.c를 추가하여 스톱워치 모듈의 실행 흐름을 관리하도록 구성했습니다.
+
 **2.SK-LINK 동작 검증**
 - ST-LINK로 분 단위 COUNT에 breakpoint를 걸고 동작을 검증했습니다.
