@@ -42,3 +42,4 @@
 "./hw/driver/hw_tim.o"
 "./hw/driver/led.o"
 "./hw/hw.o"
+"./scheduler/stopwatch_task.o"

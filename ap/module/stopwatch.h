@@ -11,19 +11,26 @@
 #include "hw.h"
 
 
+typedef enum{
+	SW_START = 1,
+	SW_PAUSE,
+	SW_STOP,
+	SW_GET_TIME,
+	SW_NONE
+}SW_CMD_TYPE_T;
 
 
-enum SW_STATE{
+typedef enum{
 	IDLE = 1,
 	RUNNING,
 	PAUSE
-};
+}SW_STATE;
 
 void stopwatch_init(void);
-void stopwatch_main(void);
 void stopwatch_start(void);
 void stopwatch_stop(void);
 void stopwatch_pause(void);
-
+void stopwatch_process(void);
+void stopwatch_set_cmd(uint8_t cmd);
 
 #endif /* STOPWATCH_H_ */

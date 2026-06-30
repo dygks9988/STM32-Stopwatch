@@ -33,4 +33,5 @@ ap \
 ap/module \
 hw/driver \
 hw \
+scheduler \
 

@@ -13,7 +13,7 @@
 
 
 typedef struct{
-	uint8_t state;
+	SW_STATE state;
 	uint8_t ten_ms_cnt;
 	uint8_t sec_cnt;
 	uint8_t min_cnt;
@@ -21,8 +21,10 @@ typedef struct{
 }stop_status;
 
 stop_status sw;
+static SW_CMD_TYPE_T SW_CMD;
 
 void stopwatch_init(void){
+	SW_CMD = SW_NONE;
 	ten_ms_flag = 0;
 	sw.state = IDLE;
 	sw.ten_ms_cnt = 0;
@@ -43,6 +45,10 @@ void stopwatch_stop(void){
 	stopwatch_init();
 	sw.state = IDLE;
 }
+void stopwatch_set_cmd(SW_CMD_TYPE_T cmd){
+	SW_CMD = cmd;
+}
+
 
 void stopwatch_update(void){
 	sw.ten_ms_cnt++;
@@ -61,28 +67,36 @@ void stopwatch_update(void){
 	}
 
 }
-
-
-void stopwatch_main(void){
-	while(1){
-	switch(sw.state){
-	case IDLE:
-		if(Bt_get_pressed() == true)
-			stopwatch_start();
-		break;
-	case RUNNING:
-		if(Bt_get_pressed()== true)
-			stopwatch_pause();
-		if(ten_ms_flag != 0){
-			stopwatch_update();
-			ten_ms_flag = 0;
-		}
-		break;
-	case PAUSE:
-		if(Bt_get_pressed() == true)
-			stopwatch_start();
-		break;
+void stopwatch_process(void){
+		switch(sw.state){
+		case IDLE:
+			if(SW_CMD == SW_START){
+				stopwatch_start();
+				SW_CMD = SW_NONE;
+			}
+			break;
+		case RUNNING:
+			if(SW_CMD == SW_PAUSE){
+				stopwatch_pause();
+				SW_CMD = SW_NONE;
+			}
+			if(ten_ms_flag != 0){
+				stopwatch_update();
+				ten_ms_flag = 0;
+			}
+			break;
+		case PAUSE:
+			if(SW_CMD == SW_STOP){
+				stopwatch_stop();
+				SW_CMD = SW_NONE;
+			}
+			if(SW_CMD == SW_START){
+				stopwatch_start();
+				SW_CMD = SW_NONE;
+			}
+			break;
 	}
-
-	}
+	//if(SW_CMD == SW_GET_TIME)
 }
+
+

@@ -10,6 +10,10 @@
 
 #include "usart.h"
 
+#define UART_CMD_CH 0
+
+
+
 void uart_tx(uint8_t ch);
 
 void uart_rx(uint8_t ch);
