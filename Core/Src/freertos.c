@@ -25,6 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "ap.h"
+#include "rtos_task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -154,7 +155,7 @@ void uart(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	 vTaskDelay(10);
   }
   /* USER CODE END uart */
 }

@@ -30,7 +30,9 @@ hw/hw.o: ../hw/hw.c ../hw/hw.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h \
  ../Core/Inc/tim.h \
- C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/button.h
+ C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/button.h \
+ C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/uart.h \
+ ../Core/Inc/usart.h
 ../hw/hw.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/led.h:
 ../Core/Inc/gpio.h:
@@ -66,3 +68,5 @@ C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/led.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h:
 ../Core/Inc/tim.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/button.h:
+C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/uart.h:
+../Core/Inc/usart.h:

@@ -5,13 +5,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../scheduler/stopwatch_task.c 
+../scheduler/rtos_task.c \
+../scheduler/stopwatch_task.c \
+../scheduler/uart_cmd_task.c 
 
 OBJS += \
-./scheduler/stopwatch_task.o 
+./scheduler/rtos_task.o \
+./scheduler/stopwatch_task.o \
+./scheduler/uart_cmd_task.o 
 
 C_DEPS += \
-./scheduler/stopwatch_task.d 
+./scheduler/rtos_task.d \
+./scheduler/stopwatch_task.d \
+./scheduler/uart_cmd_task.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -21,7 +27,7 @@ scheduler/%.o scheduler/%.su scheduler/%.cyclo: ../scheduler/%.c scheduler/subdi
 clean: clean-scheduler
 
 clean-scheduler:
-	-$(RM) ./scheduler/stopwatch_task.cyclo ./scheduler/stopwatch_task.d ./scheduler/stopwatch_task.o ./scheduler/stopwatch_task.su
+	-$(RM) ./scheduler/rtos_task.cyclo ./scheduler/rtos_task.d ./scheduler/rtos_task.o ./scheduler/rtos_task.su ./scheduler/stopwatch_task.cyclo ./scheduler/stopwatch_task.d ./scheduler/stopwatch_task.o ./scheduler/stopwatch_task.su ./scheduler/uart_cmd_task.cyclo ./scheduler/uart_cmd_task.d ./scheduler/uart_cmd_task.o ./scheduler/uart_cmd_task.su
 
 .PHONY: clean-scheduler
 

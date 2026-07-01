@@ -1,0 +1,4 @@
+../hw/driver/uart.c:24:6:uart_init	8	static
+../hw/driver/uart.c:28:6:uart_tx	16	static
+../hw/driver/uart.c:33:6:uart_rx_ready	16	static
+../hw/driver/uart.c:39:6:HAL_UART_RxCpltCallback	24	static,ignoring_inline_asm

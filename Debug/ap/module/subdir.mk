@@ -5,13 +5,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../ap/module/stopwatch.c 
+../ap/module/stopwatch.c \
+../ap/module/uart_cmd.c 
 
 OBJS += \
-./ap/module/stopwatch.o 
+./ap/module/stopwatch.o \
+./ap/module/uart_cmd.o 
 
 C_DEPS += \
-./ap/module/stopwatch.d 
+./ap/module/stopwatch.d \
+./ap/module/uart_cmd.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -21,7 +24,7 @@ ap/module/%.o ap/module/%.su ap/module/%.cyclo: ../ap/module/%.c ap/module/subdi
 clean: clean-ap-2f-module
 
 clean-ap-2f-module:
-	-$(RM) ./ap/module/stopwatch.cyclo ./ap/module/stopwatch.d ./ap/module/stopwatch.o ./ap/module/stopwatch.su
+	-$(RM) ./ap/module/stopwatch.cyclo ./ap/module/stopwatch.d ./ap/module/stopwatch.o ./ap/module/stopwatch.su ./ap/module/uart_cmd.cyclo ./ap/module/uart_cmd.d ./ap/module/uart_cmd.o ./ap/module/uart_cmd.su
 
 .PHONY: clean-ap-2f-module
 
