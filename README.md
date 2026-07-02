@@ -8,10 +8,29 @@
 - 현재 sw_tim 업데이트 이벤트의 ISR에서 메인루프의 지연으로 인해 전역변수가 유실 될 수 있다는 점을 확인했습니다.
 - 전역변수의 한계를 느끼고 RTOS의 메세지 큐를 활용한 모듈간 통신을 검토중입니다.
 
+---
+
 ### v.2.1 RTOS 아키텍처 사전 준비 및 STOPWATCH_TASK 추가
 **1. RTOS task 실행 계층 추가**
-- FreeRTOS Scheduler에 의해 실행되는 Task 코드를 scheduler 계층으로 분리했습니다
+- FreeRTOS Scheduler에 의해 실행되는 Task 코드를 scheduler 계층으로 분리했습니다.
 - 해당 계층에 stopwatch_task.c를 추가하여 스톱워치 모듈의 실행 흐름을 관리하도록 구성했습니다.
 
-**2.SK-LINK 동작 검증**
+**2.ST-LINK 동작 검증**
 - ST-LINK로 분 단위 COUNT에 breakpoint를 걸고 동작을 검증했습니다.
+
+---
+
+### v.2.2 UART_CMD 파서 모듈 추가 및 검증
+**1. UART_CMD_PROCESS 파서 모듈 추가**
+- UART의 ISR에서 UART_CMD_TASK로 전송한 1byte data를 모듈 내부 정적 배열에 저장 한 뒤
+- 명령문의 끝 지점에서 문자열을 비교해 CMD_STATE를 변경하는 모듈을 추가했습니다.
+- 시스템이 시작 될때 정적 배열로 데이터를 넣어 CMD_STATE의 상태가 변경되는 것을 확인하여 모듈의 검증을 완료 했습니다.
+
+**2. UART_CMD_PROCESS 한계점**
+- 현재 모듈의 구조는 UART_CMD_TASK가 명령 대상 채널을 미리 지정하고, 파서 모듈은 해당 채널의 명령어 문자열만 비교하는 방식입니다.
+- UART의 ISR에서 전송되는 1byte data로는 문장이 완성 되기 전까지는 타겟을 지정하기 어렵다는 것을 파악했습니다.
+
+**3. 향후 UART_CMD_PROCESS 리팩토링 계획**
+- 향후 파서 모듈이 문자열 명령을 분석하여 target과 command를 포함한 결과를 반환하고
+- UART_CMD_TASK는 해당 target을 기준으로 각 Task Queue에 명령을 전달하는 구조로 리팩토링할 계획입니다.
+- 이를 통해 향후 UART_CMD로 제어할 디바이스를 추가하더라도 기존 로직에서 구조를 바꾸지 않고 확장이 가능 할 것입니다.
