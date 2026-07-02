@@ -8,6 +8,8 @@
 - 현재 sw_tim 업데이트 이벤트의 ISR에서 메인루프의 지연으로 인해 전역변수가 유실 될 수 있다는 점을 확인했습니다.
 - 전역변수의 한계를 느끼고 RTOS의 메세지 큐를 활용한 모듈간 통신을 검토중입니다.
 
+---
+
 ### v.2.1 RTOS 아키텍처 사전 준비 및 STOPWATCH_TASK 추가
 **1. RTOS task 실행 계층 추가**
 - FreeRTOS Scheduler에 의해 실행되는 Task 코드를 scheduler 계층으로 분리했습니다.
@@ -15,6 +17,8 @@
 
 **2.ST-LINK 동작 검증**
 - ST-LINK로 분 단위 COUNT에 breakpoint를 걸고 동작을 검증했습니다.
+
+---
 
 ### v.2.2 UART_CMD 파서 모듈 추가 및 검증
 **1. UART_CMD_PROCESS 파서 모듈 추가**
