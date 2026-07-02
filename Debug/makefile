@@ -9,7 +9,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include scheduler/subdir.mk
+-include rtos/subdir.mk
 -include hw/driver/subdir.mk
 -include hw/subdir.mk
 -include ap/module/subdir.mk

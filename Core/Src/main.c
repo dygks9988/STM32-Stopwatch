@@ -26,6 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "ap.h"
+#include "rtos_task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,6 +96,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   hw_init();
   ap_init();
+  rtos_init();
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -188,7 +190,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
-  hw_TIM_PeriodElapsedCallback(htim);
+  else{
+	  hw_TIM_PeriodElapsedCallback(htim);}
   /* USER CODE END Callback 1 */
 }
 

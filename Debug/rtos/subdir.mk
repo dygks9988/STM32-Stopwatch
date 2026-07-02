@@ -5,23 +5,29 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c 
+../rtos/rtos_task.c \
+../rtos/stopwatch_task.c \
+../rtos/uart_cmd_task.c 
 
 OBJS += \
-./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o 
+./rtos/rtos_task.o \
+./rtos/stopwatch_task.o \
+./rtos/uart_cmd_task.o 
 
 C_DEPS += \
-./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.d 
+./rtos/rtos_task.d \
+./rtos/stopwatch_task.d \
+./rtos/uart_cmd_task.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/%.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/%.su Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/%.cyclo: ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/%.c Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/subdir.mk
+rtos/%.o rtos/%.su rtos/%.cyclo: ../rtos/%.c rtos/subdir.mk
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I"C:/stm_workspace_1.16.1/stm32f411_RE/rtos" -I../Core/Inc -I"C:/stm_workspace_1.16.1/stm32f411_RE/ap" -I"C:/stm_workspace_1.16.1/stm32f411_RE/hw" -I"C:/stm_workspace_1.16.1/stm32f411_RE/ap/module" -I"C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 
-clean: clean-Middlewares-2f-Third_Party-2f-FreeRTOS-2f-Source-2f-portable-2f-GCC-2f-ARM_CM4F
+clean: clean-rtos
 
-clean-Middlewares-2f-Third_Party-2f-FreeRTOS-2f-Source-2f-portable-2f-GCC-2f-ARM_CM4F:
-	-$(RM) ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.cyclo ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.d ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.su
+clean-rtos:
+	-$(RM) ./rtos/rtos_task.cyclo ./rtos/rtos_task.d ./rtos/rtos_task.o ./rtos/rtos_task.su ./rtos/stopwatch_task.cyclo ./rtos/stopwatch_task.d ./rtos/stopwatch_task.o ./rtos/stopwatch_task.su ./rtos/uart_cmd_task.cyclo ./rtos/uart_cmd_task.d ./rtos/uart_cmd_task.o ./rtos/uart_cmd_task.su
 
-.PHONY: clean-Middlewares-2f-Third_Party-2f-FreeRTOS-2f-Source-2f-portable-2f-GCC-2f-ARM_CM4F
+.PHONY: clean-rtos
 

@@ -1,4 +1,4 @@
-scheduler/stopwatch_task.o: ../scheduler/stopwatch_task.c \
+rtos/stopwatch_task.o: ../rtos/stopwatch_task.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \

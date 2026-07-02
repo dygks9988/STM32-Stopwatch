@@ -9,11 +9,12 @@
 #define MODULE_UART_CMD_H_
 
 #include "uart.h"
+#define MAX_CMD_CH 1
+
 
 typedef enum{
-	SW_ch = 0,
-	Max_Cmd_ch
-}Uart_Cmd_ch; //마지막 ch 아래에 추가하는 방식
+	SW_ch = 0
+}Uart_Cmd_ch; //마지막 ch 아래에 추가
 
 
 

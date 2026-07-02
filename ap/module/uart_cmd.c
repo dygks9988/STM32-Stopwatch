@@ -11,13 +11,15 @@
 
 #define CMD_IDX_MAX 30
 
+
 bool uart_cmd_process(uint8_t data,uint8_t* cmd,uint8_t cmd_ch){
-	if(cmd == NULL || Max_Cmd_ch <= cmd_ch)return false;
+	if(cmd == NULL || MAX_CMD_CH <= cmd_ch)return false;
 
 	static uint8_t cmd_buf[CMD_IDX_MAX];
 	static uint8_t cmd_idx = 0;
 
-	if(data == '\r' || data == '\n'){
+	if(data == '\r' || data == '\n')// \n 또는 \n 수신 시 하나의 명령어가 완성 된 것으로 판단
+	{
 		if(cmd_idx == 0)return false;
 
 		cmd_buf[cmd_idx] = '\0';

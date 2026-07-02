@@ -19,13 +19,15 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "FreeRTOS.h"
+#include "task.h"
 #include "main.h"
 #include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "ap.h"
-#include "rtos_task.h"
+
+#include "../../rtos/rtos_task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -155,7 +157,7 @@ void uart(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	 vTaskDelay(10);
+	  uart_cmd_task();
   }
   /* USER CODE END uart */
 }
