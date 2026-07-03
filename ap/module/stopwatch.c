@@ -21,10 +21,10 @@ typedef struct{
 }stop_status;
 
 stop_status sw;
-static SW_CMD_TYPE_T SW_CMD;
+static SW_CMD_TYPE_T sw_cmd;
 
 void stopwatch_init(void){
-	SW_CMD = SW_NONE;
+	sw_cmd = SW_NONE;
 	ten_ms_flag = 0;
 	sw.state = IDLE;
 	sw.ten_ms_cnt = 0;
@@ -46,7 +46,7 @@ void stopwatch_stop(void){
 	sw.state = IDLE;
 }
 void stopwatch_set_cmd(SW_CMD_TYPE_T cmd){
-	SW_CMD = cmd;
+	sw_cmd = cmd;
 }
 
 
@@ -70,15 +70,15 @@ void stopwatch_update(void){
 void stopwatch_process(void){
 		switch(sw.state){
 		case IDLE:
-			if(SW_CMD == SW_START){
+			if(sw_cmd == SW_START){
 				stopwatch_start();
-				SW_CMD = SW_NONE;
+				sw_cmd = SW_NONE;
 			}
 			break;
 		case RUNNING:
-			if(SW_CMD == SW_PAUSE){
+			if(sw_cmd == SW_PAUSE){
 				stopwatch_pause();
-				SW_CMD = SW_NONE;
+				sw_cmd = SW_NONE;
 			}
 			if(ten_ms_flag != 0){
 				stopwatch_update();
@@ -86,17 +86,18 @@ void stopwatch_process(void){
 			}
 			break;
 		case PAUSE:
-			if(SW_CMD == SW_STOP){
+			if(sw_cmd == SW_STOP){
 				stopwatch_stop();
-				SW_CMD = SW_NONE;
+				sw_cmd = SW_NONE;
 			}
-			if(SW_CMD == SW_START){
+			if(sw_cmd == SW_START){
 				stopwatch_start();
-				SW_CMD = SW_NONE;
+				sw_cmd = SW_NONE;
 			}
 			break;
 	}
-	//if(SW_CMD == SW_GET_TIME)
+	//if(sw_cmd == SW_GET_TIME)
+
 }
 
 

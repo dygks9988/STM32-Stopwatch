@@ -7,27 +7,25 @@
 
 
 
-#include "FreeRTOS.h"
-#include "task.h"
-
+#include "rtos_task.h"
 #include "stopwatch.h"
 
-const TickType_t Sw_Task_Tick = 10;
+const TickType_t Sw_Task_Delay_Tick = 10;
 
 
 
 
 void stopwatch_task(){
 	stopwatch_init();
-	SW_CMD_TYPE_T CMD = SW_START;
-
+	SW_CMD_TYPE_T Cmd = SW_NONE;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
 
 	for(;;){
-		stopwatch_set_cmd(CMD);
-		CMD = SW_NONE;
+		if(xQueueReceive(SW_Cmd_QueueHandle,&Cmd,0)== pdPASS){
+			stopwatch_set_cmd(Cmd);
+		}
 		stopwatch_process();
-		vTaskDelayUntil(&xLastWakeTime, Sw_Task_Tick);
+		vTaskDelayUntil(&xLastWakeTime, Sw_Task_Delay_Tick);
 	}
 }
 
