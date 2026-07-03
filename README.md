@@ -63,4 +63,18 @@
 - 아직 파싱된 command를 `STOPWATCH_TASK`로 전달하는 구조는 구현하지 않았습니다.
 - Stop_watch_task로 전달된 명령이 stop_watch 모듈의 동작을 제어하는 것까지 데이터의 흐름을 이어볼 생각입니다. 
 
+---
+### v.2.4 UART_CMD_TASK to SW_TASK task간 Queue 통신과 UART_CMD기반 SW_MODULE 상태 제어 검증
+**1. UART_CMD_TASK to SW_TASK 데이터 흐름 검증**
+- Rtos Queue를 이용해 파싱된 cmd를 SW_TASK로 보내는 데이터의 흐름을 검증했습니다.
+- SW_TASK는 파싱된 CMD를 받으면 SW_SET_CMD 통해 SW_MODULE 내부 SW_CMD의 상태를 전환 합니다.
 
+**2. UART_CMD 기반 SW_MODULE 상태 제어 검증**
+- 주기적으로 실행되는 SW_MODULE은 내부의 SW_CMD의 상태를 검사합니다.
+- SW_CMD가 상태가 전환되어 있으면 SW_MODULE의 내부 상태를 전환하고 전환 된 상태로 동작합니다.
+- Tera Term에서 SW_START, SW_PAUSE, SW_STOP 명령을 송신했을 때, Debugger를 통해 각 command가 SW_TASK로 전달되고 Stopwatch 상태 전환 로직에 반영되는 것을 확인했습니다.
+
+**3. 발견한 문제점**
+- 현재 TX와 UART_RX의 BUADRATE가 일치하지 않으면 UART_CMD_PARSER의 내부 정적배열에 쓰레기 값이 저장되는 것을 확인했습니다.
+- 정적 배열의 buffer_overflow의 예외처리는 if(buffer_idx >= buffer_size)buffer_idx = 0;로 적용되어 있는 상태입니다.
+- 현재 UART_CMD_PARSER내부의 정적배열에 쓰레기값이 들어올 때의 예외처리를 고민중입니다.
