@@ -1,3 +1,24 @@
+### STM32F411RE RTOS 기반 비동기 제어 시스템
+
+## 프로젝트 개요
+STM32F411RE 보드를 기반으로 GPIO, TIM, UART, Interrupt, FreeRTOS Task를 활용한 비동기 제어 시스템을 구현하는 프로젝트입니다.
+
+초기에는 TIM Interrupt와 main loop 기반의 Stopwatch 기능 구현으로 시작했지만, 기능 확장 과정에서 main.c의 복잡도 증가와 Application/HW 계층 결합 문제를 발견했습니다. 이를 개선하기 위해 HW Wrapper 계층, RTOS Task, Queue 기반 모듈 간 통신 구조로 리팩토링했습니다.
+
+## 현재 구현 상태
+- AP/HW 계층 분리
+- Stopwatch Task 추가
+- UART RX ISR → Queue → UART_CMD_TASK 데이터 흐름 검증
+- UART_CMD_PARSER 모듈 추가
+- UART_CMD_TASK → SW_TASK Queue 통신 검증
+- UART 명령 기반 Stopwatch 상태 제어 검증
+
+## 주요 데이터 흐름
+
+UART RX ISR > UartRxQueue > UART_CMD_TASK > UART_CMD_PARSER > SwCmdQueue > SW_TASK > STOPWATCH MODULE
+
+---
+
 ### v.2.0 아키텍처 리팩토링 및 검증
 
 **1. AP/HW 계층 분리**
