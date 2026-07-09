@@ -21,7 +21,7 @@ typedef struct{
 }stop_status;
 
 stop_status sw;
-static SW_CMD_TYPE_T sw_cmd;
+static Sw_Cmd_Type_t sw_cmd;
 
 void stopwatch_init(void){
 	sw_cmd = SW_NONE;
@@ -33,19 +33,19 @@ void stopwatch_init(void){
 	sw.hour_cnt = 0;
 }
 void stopwatch_start(void){
-	hw_TIM_start(SW_ch);
+	hw_TIM_start(SW_TIM_CH);
 	sw.state = RUNNING;
 }
 void stopwatch_pause(void){
-	hw_TIM_stop(SW_ch);
+	hw_TIM_stop(SW_TIM_CH);
 	sw.state = PAUSE;
 }
 void stopwatch_stop(void){
-	hw_TIM_stop(SW_ch);
+	hw_TIM_stop(SW_TIM_CH);
 	stopwatch_init();
 	sw.state = IDLE;
 }
-void stopwatch_set_cmd(SW_CMD_TYPE_T cmd){
+void stopwatch_set_cmd(Sw_Cmd_Type_t cmd){
 	sw_cmd = cmd;
 }
 

@@ -24,6 +24,6 @@ void rtos_init(void)
 	SW_Cmd_QueueHandle = xQueueCreate(SW_CMD_QUEUE_LENGTH,sizeof(uint8_t));
 	if(SW_Cmd_QueueHandle == NULL){
 			Error_Handler();
-		}
+	}
 
 }

@@ -17,7 +17,7 @@ const TickType_t Sw_Task_Delay_Tick = 10;
 
 void stopwatch_task(){
 	stopwatch_init();
-	SW_CMD_TYPE_T Cmd = SW_NONE;
+	Sw_Cmd_Type_t Cmd = SW_NONE;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
 
 	for(;;){

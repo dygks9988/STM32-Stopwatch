@@ -10,13 +10,19 @@
 
 #include "tim.h"
 
-#define TIM_max_ch 1
-#define SW_ch 0
+#define HW_TIM_MAX_CH 2
+#define SW_TIM_CH 0
+
+
 
 volatile extern uint8_t ten_ms_flag;
 
 void hw_TIM_start(uint8_t ch);
 void hw_TIM_stop(uint8_t ch);
+
+void hw_TIM_pwm_start(uint8_t ch);
+void hw_TIM_pwm_stop(uint8_t ch);
+void hw_TIM_pwm_set_ccr(uint8_t ch,uint16_t ccr);
 
 void hw_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
 

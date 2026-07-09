@@ -13,11 +13,15 @@
 
 
 typedef enum{
-	SW_ch = 0
+	None_Cmd_ch,
+	SW_Cmd_ch
 }Uart_Cmd_ch; //마지막 ch 아래에 추가
 
+typedef struct{
+	uint8_t cmd;
+	Uart_Cmd_ch target_ch;
+}Uart_Cmd_type;
 
-
-bool uart_cmd_process(uint8_t data,uint8_t* cmd,uint8_t cmd_ch);
+bool uart_cmd_process(uint8_t data,Uart_Cmd_type* huart_cmd);
 
 #endif /* MODULE_UART_CMD_H_ */

@@ -15,7 +15,7 @@ void rtos_init(void);
 
 void stopwatch_task(void);
 void uart_cmd_task(void);
-
+void motor_task(void);
 extern QueueHandle_t UartRxQueueHandle;
 extern QueueHandle_t SW_Cmd_QueueHandle;
 

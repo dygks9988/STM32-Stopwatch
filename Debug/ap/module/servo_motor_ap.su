@@ -1,0 +1,2 @@
+../ap/module/servo_motor_ap.c:10:6:set_servo_motor_cmd	16	static
+../ap/module/servo_motor_ap.c:14:6:servo_motor_process	16	static

@@ -5,16 +5,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../rtos/motor_task.c \
 ../rtos/rtos_task.c \
 ../rtos/stopwatch_task.c \
 ../rtos/uart_cmd_task.c 
 
 OBJS += \
+./rtos/motor_task.o \
 ./rtos/rtos_task.o \
 ./rtos/stopwatch_task.o \
 ./rtos/uart_cmd_task.o 
 
 C_DEPS += \
+./rtos/motor_task.d \
 ./rtos/rtos_task.d \
 ./rtos/stopwatch_task.d \
 ./rtos/uart_cmd_task.d 
@@ -27,7 +30,7 @@ rtos/%.o rtos/%.su rtos/%.cyclo: ../rtos/%.c rtos/subdir.mk
 clean: clean-rtos
 
 clean-rtos:
-	-$(RM) ./rtos/rtos_task.cyclo ./rtos/rtos_task.d ./rtos/rtos_task.o ./rtos/rtos_task.su ./rtos/stopwatch_task.cyclo ./rtos/stopwatch_task.d ./rtos/stopwatch_task.o ./rtos/stopwatch_task.su ./rtos/uart_cmd_task.cyclo ./rtos/uart_cmd_task.d ./rtos/uart_cmd_task.o ./rtos/uart_cmd_task.su
+	-$(RM) ./rtos/motor_task.cyclo ./rtos/motor_task.d ./rtos/motor_task.o ./rtos/motor_task.su ./rtos/rtos_task.cyclo ./rtos/rtos_task.d ./rtos/rtos_task.o ./rtos/rtos_task.su ./rtos/stopwatch_task.cyclo ./rtos/stopwatch_task.d ./rtos/stopwatch_task.o ./rtos/stopwatch_task.su ./rtos/uart_cmd_task.cyclo ./rtos/uart_cmd_task.d ./rtos/uart_cmd_task.o ./rtos/uart_cmd_task.su
 
 .PHONY: clean-rtos
 

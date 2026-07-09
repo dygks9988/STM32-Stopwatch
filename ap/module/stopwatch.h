@@ -17,7 +17,7 @@ typedef enum{
 	SW_STOP,
 	SW_GET_TIME,
 	SW_NONE
-}SW_CMD_TYPE_T;
+}Sw_Cmd_Type_t;
 
 
 typedef enum{
