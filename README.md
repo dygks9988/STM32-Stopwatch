@@ -15,7 +15,7 @@ STM32F411RE 보드를 기반으로 GPIO, TIM, UART, Interrupt, FreeRTOS Task를 
 
 ## 주요 데이터 흐름
 
-UART RX ISR > UartRxQueue > UART_CMD_TASK > UART_CMD_PARSER > SwCmdQueue > SW_TASK > STOPWATCH MODULE
+UART_RX_ISR > Uart_Rx_Queue > uart_cmd_task > uart_cmd_process(parser) > Sw_Cmd_Queue > sw_task > sw_module
 
 ---
 
