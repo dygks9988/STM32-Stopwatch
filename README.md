@@ -99,3 +99,15 @@ UART_RX_ISR > Uart_Rx_Queue > uart_cmd_task > uart_cmd_process(parser) > Sw_Cmd_
 - 현재 TX와 UART_RX의 BUADRATE가 일치하지 않으면 UART_CMD_PARSER의 내부 정적배열에 쓰레기 값이 저장되는 것을 확인했습니다.
 - 정적 배열의 buffer_overflow의 예외처리는 if(buffer_idx >= buffer_size)buffer_idx = 0;로 적용되어 있는 상태입니다.
 - 현재 UART_CMD_PARSER내부의 정적배열에 쓰레기값이 들어올 때의 예외처리를 고민중입니다.
+
+---
+
+### 진행 중: Servo Motor Task 확장
+
+- UART_CMD_PARSER에서 SERVO 명령을 분리하고, ServoCmdQueue를 통해 Servo Task로 전달하는 구조를 추가 중입니다.
+- 현재 서보 모터의 명령어를 처리하는 로직을 추가 했습니다.
+- 서보 모터 디바이스 구조화하여 TASK에서 여러개의 모터를 각각의 객체 처럼 다루는 방식으로 설계되었습니다.
+- UART_CMD가 SERVO_TASK로 전달되면 Process를 실행하여 명령어를 처리하는 로직을 실행하는 구조로 설계중에 있습니다.
+- 현재 명령어 처리 로직을 동작 검증하지 못했습니다
+- Lojic Analazer를 통해 타이머 20ms 주기의 신호와 SERVO PWM  1ms / 1.5ms / 2ms High pulse 신호를 측정하여 동작 검증할 예정입니다
+
