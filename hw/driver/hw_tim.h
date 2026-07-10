@@ -11,6 +11,7 @@
 #include "tim.h"
 
 #define HW_TIM_MAX_CH 2
+
 #define SW_TIM_CH 0
 
 

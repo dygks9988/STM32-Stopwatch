@@ -14,7 +14,7 @@
 #include "hw_tim.h"
 #include "button.h"
 #include "uart.h"
-
+#include "hw_motor.h"
 
 void hw_init(void);
 

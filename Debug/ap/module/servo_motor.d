@@ -1,5 +1,5 @@
-ap/module/servo_motor_ap.o: ../ap/module/servo_motor_ap.c \
- ../ap/module/servo_motor_ap.h \
+ap/module/servo_motor.o: ../ap/module/servo_motor.c \
+ ../ap/module/servo_motor.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h \
  ../Core/Inc/tim.h ../Core/Inc/main.h \
@@ -31,7 +31,7 @@ ap/module/servo_motor_ap.o: ../ap/module/servo_motor_ap.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-../ap/module/servo_motor_ap.h:
+../ap/module/servo_motor.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h:
 ../Core/Inc/tim.h:

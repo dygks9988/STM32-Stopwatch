@@ -12,6 +12,7 @@
 void hw_motor_init(uint8_t ch){
 	hw_motor_set_angle(ch,0);
 }
+
 void hw_motor_start(uint8_t ch){
 	hw_TIM_pwm_start(ch);
 }

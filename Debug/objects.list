@@ -37,7 +37,7 @@
 "./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o"
 "./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o"
 "./ap/ap.o"
-"./ap/module/servo_motor_ap.o"
+"./ap/module/servo_motor.o"
 "./ap/module/stopwatch.o"
 "./ap/module/uart_cmd.o"
 "./hw/driver/button.o"
