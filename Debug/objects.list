@@ -48,5 +48,6 @@
 "./hw/hw.o"
 "./rtos/motor_task.o"
 "./rtos/rtos_task.o"
+"./rtos/servo_test.o"
 "./rtos/stopwatch_task.o"
 "./rtos/uart_cmd_task.o"

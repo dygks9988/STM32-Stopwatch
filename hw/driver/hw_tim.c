@@ -30,7 +30,7 @@ void hw_TIM_pwm_start(uint8_t ch){
 }
 void hw_TIM_pwm_stop(uint8_t ch){
 	if(ch >= HW_TIM_MAX_CH)return;
-	HAL_TIM_PWM_Start(TIM_ch[ch], TIM_CHANNEL_1);
+	HAL_TIM_PWM_Stop(TIM_ch[ch], TIM_CHANNEL_1);
 }
 void hw_TIM_pwm_set_ccr(uint8_t ch,uint16_t ccr){
 	__HAL_TIM_SET_COMPARE(TIM_ch[ch],TIM_CHANNEL_1,ccr);

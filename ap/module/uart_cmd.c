@@ -7,10 +7,12 @@
 
 
 #include "uart_cmd.h"
-#include "stopwatch.h"
+
 
 #define CMD_IDX_MAX 30
 #define SW_TARGET_CMP_LEN 3
+#define SERVO_TARGET_CMP_LEN 6
+
 
 bool uart_cmd_process(uint8_t data,Uart_Cmd_type* huart_cmd){
 	if(huart_cmd == NULL)return false;
@@ -24,18 +26,23 @@ bool uart_cmd_process(uint8_t data,Uart_Cmd_type* huart_cmd){
 
 		cmd_buf[cmd_idx] = '\0';
 		cmd_idx = 0;
-		huart_cmd->target_ch = None_Cmd_ch;
+		huart_cmd->target_ch = NONE_CMD_CH;
 
 		if(strncmp((char *)cmd_buf, "SW_",SW_TARGET_CMP_LEN) == 0) // 타겟 지정
 		{
-			huart_cmd->target_ch = SW_Cmd_ch;
+			huart_cmd->target_ch = SW_CMD_CH;
+		}
+
+		if(strncmp((char *)cmd_buf, "SERVO_",SERVO_TARGET_CMP_LEN) == 0) // 타겟 지정
+		{
+			huart_cmd->target_ch = SERVO_CMD_CH;
 		}
 
 		switch(huart_cmd->target_ch)
 			{
-			case None_Cmd_ch:
+			case NONE_CMD_CH:
 				return false;
-			case SW_Cmd_ch:
+			case SW_CMD_CH:
 				if(strcmp((char *)cmd_buf, "SW_START") == 0)
 				{
 					huart_cmd->cmd = SW_START;
@@ -55,7 +62,10 @@ bool uart_cmd_process(uint8_t data,Uart_Cmd_type* huart_cmd){
 				}
 				else
 					return false; // 명령어가 테이블에 있지 않으면 false
+			case SERVO_CMD_CH:
+				break;
 			}
+
 	}
 	else{
 		if(cmd_idx >= CMD_IDX_MAX -1)cmd_idx = 0;

@@ -36,7 +36,8 @@ ap/ap.o: ../ap/ap.c ../ap/ap.h \
  ../Core/Inc/usart.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h \
- C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/stopwatch.h
+ C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/stopwatch.h \
+ C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h
 ../ap/ap.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/hw.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/led.h:
@@ -78,3 +79,4 @@ C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/uart.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/stopwatch.h:
+C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h:

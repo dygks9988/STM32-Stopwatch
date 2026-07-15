@@ -11,7 +11,7 @@
 #include "tim.h"
 
 #define HW_TIM_MAX_CH 2
-
+#define HW_PWM_CH 1
 #define SW_TIM_CH 0
 
 

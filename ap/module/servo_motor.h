@@ -26,16 +26,17 @@ typedef enum{
 typedef struct{
 	Servo_CmdTypeDef servo_cmd;
 	uint8_t servo_cmd_angle;
-}Servo_Cmd_HandleTypeDef;
+}Servo_Cmd_PacketTypeDef;
 
 typedef struct{
-	Servo_Cmd_HandleTypeDef hservo_cmd;
+	Servo_Cmd_PacketTypeDef hservo_cmd;
 	Servo_StateTypeDef servo_state;
+	uint8_t servo_tim_ch;
 	uint8_t servo_angle;
 }Servo_HandleTypeDef;
 
-void servo_motor_init(Servo_HandleTypeDef* hservo);
-void set_servo_motor_cmd(Servo_HandleTypeDef* hservo,Servo_CmdTypeDef cmd,uint8_t angle);
+void servo_motor_init(Servo_HandleTypeDef* hservo,uint8_t tim_ch);
+void set_servo_motor_cmd(Servo_HandleTypeDef* hservo,Servo_Cmd_PacketTypeDef* pservo_cmd);
 void servo_motor_process(Servo_HandleTypeDef* hservo);
 
 

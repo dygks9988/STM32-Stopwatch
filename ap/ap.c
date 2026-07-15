@@ -9,5 +9,4 @@
 
 
 void ap_init(void){
-	stopwatch_init();
 }

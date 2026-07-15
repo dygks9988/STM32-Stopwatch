@@ -18,7 +18,7 @@ static UART_HandleTypeDef* uart_tbl[UART_MAX] = {
 };
 
 
-static uint8_t rx_pData;
+static uint8_t rx_1byte;
 
 void uart_init(){
 	uart_rx_ready(UART_CMD_CH);
@@ -31,7 +31,7 @@ void uart_tx(uint8_t ch, uint8_t* pData, uint16_t len){
 
 void uart_rx_ready(uint8_t ch){
 	if (ch >= UART_MAX)return;
-	rx_state = HAL_UART_Receive_IT(uart_tbl[ch],&rx_pData,sizeof(rx_pData));
+	rx_state = HAL_UART_Receive_IT(uart_tbl[ch],&rx_1byte,sizeof(rx_1byte));
 }
 
 
@@ -39,7 +39,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	if(huart->Instance == uart_tbl[UART_CMD_CH]->Instance){
 		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
-		xQueueSendFromISR(UartRxQueueHandle, &rx_pData, &xHigherPriorityTaskWoken);
+		xQueueSendFromISR(UartRxQueueHandle, &rx_1byte, &xHigherPriorityTaskWoken);
 
 		uart_rx_ready(UART_CMD_CH);
 		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);

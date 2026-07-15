@@ -9,7 +9,7 @@
 #define DRIVER_HW_MOTOR_H_
 
 #include "hw_tim.h"
-#define SERVO_MOTOR_TIM_CH 1
+#define SERVO_MOTOR_TIM_CH HW_PWM_CH
 
 
 void hw_motor_init(uint8_t ch);
