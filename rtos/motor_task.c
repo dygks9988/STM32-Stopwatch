@@ -12,6 +12,12 @@ void servo_motor_task(void){
 	Servo_HandleTypeDef hservo1;
 
 	servo_motor_init(&hservo1,SERVO_MOTOR_TIM_CH);
+
+	pservo_cmd.servo_cmd = SERVO_CMD_START;
+	pservo_cmd.servo_cmd_angle = 0;
+	set_servo_motor_cmd(&hservo1, &pservo_cmd);
+	servo_motor_process(&hservo1);
+
 	for(;;){
 		if(xQueueReceive(Servo_Cmd_QueueHandle, &pservo_cmd, portMAX_DELAY)==pdPASS){
 			set_servo_motor_cmd(&hservo1,&pservo_cmd);

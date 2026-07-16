@@ -13,6 +13,8 @@
 
 #include "stopwatch.h"
 #include "servo_motor.h"
+#include "smart_blind.h"
+
 
 void ap_init(void);
 

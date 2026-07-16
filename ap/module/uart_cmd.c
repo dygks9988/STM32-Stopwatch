@@ -10,9 +10,9 @@
 
 
 #define CMD_IDX_MAX 30
-#define SW_TARGET_CMP_LEN 3
+#define STOPWATCH_TARGET_CMP_LEN 3
 #define SERVO_TARGET_CMP_LEN 6
-
+#define BLIND_TARGET_CMP_LEN 6
 
 bool uart_cmd_process(uint8_t data,Uart_Cmd_type* huart_cmd){
 	if(huart_cmd == NULL)return false;
@@ -28,14 +28,18 @@ bool uart_cmd_process(uint8_t data,Uart_Cmd_type* huart_cmd){
 		cmd_idx = 0;
 		huart_cmd->target_ch = NONE_CMD_CH;
 
-		if(strncmp((char *)cmd_buf, "SW_",SW_TARGET_CMP_LEN) == 0) // 타겟 지정
+		if(strncmp((char *)cmd_buf, "SW_",STOPWATCH_TARGET_CMP_LEN) == 0) // 타겟 지정
 		{
 			huart_cmd->target_ch = SW_CMD_CH;
 		}
 
-		if(strncmp((char *)cmd_buf, "SERVO_",SERVO_TARGET_CMP_LEN) == 0) // 타겟 지정
+		if(strncmp((char *)cmd_buf, "SERVO_",SERVO_TARGET_CMP_LEN) == 0)
 		{
 			huart_cmd->target_ch = SERVO_CMD_CH;
+		}
+		if(strncmp((char *)cmd_buf, "BLIND_",BLIND_TARGET_CMP_LEN) == 0)
+		{
+			huart_cmd->target_ch = BLIND_CMD_CH;
 		}
 
 		switch(huart_cmd->target_ch)
@@ -60,10 +64,30 @@ bool uart_cmd_process(uint8_t data,Uart_Cmd_type* huart_cmd){
 					huart_cmd->cmd = SW_GET_TIME;
 					break;
 				}
-				else
+				else{
+					huart_cmd->target_ch = NONE_CMD_CH;
 					return false; // 명령어가 테이블에 있지 않으면 false
+				}
 			case SERVO_CMD_CH:
+				return false;
+			case BLIND_CMD_CH:
+				if(strcmp((char *)cmd_buf, "BLIND_CLOSE") == 0)
+				{
+				huart_cmd->cmd = BLIND_CMD_CLOSE;
 				break;
+				}
+				else if(strcmp((char *)cmd_buf, "BLIND_HALF") == 0){
+					huart_cmd->cmd = BLIND_CMD_HALF;
+					break;
+				}
+				else if(strcmp((char *)cmd_buf, "BLIND_OPEN") == 0){
+					huart_cmd->cmd = BLIND_CMD_OPEN;
+					break;
+				}
+				else{
+					huart_cmd->target_ch = NONE_CMD_CH;
+					return false; // 명령어가 테이블에 있지 않으면 false
+				}
 			}
 
 	}

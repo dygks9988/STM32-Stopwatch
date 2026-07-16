@@ -15,11 +15,11 @@ void servo_motor_init(Servo_HandleTypeDef* hservo,uint8_t tim_ch){
 }
 
 
-void set_servo_motor_cmd(Servo_HandleTypeDef* hservo,Servo_Cmd_PacketTypeDef* hservo_cmd){
-	if(hservo == NULL)return;
+void set_servo_motor_cmd(Servo_HandleTypeDef* hservo,Servo_Cmd_PacketTypeDef* pservo_cmd){
+	if(hservo == NULL || pservo_cmd == NULL)return;
 
-	hservo->hservo_cmd.servo_cmd = hservo_cmd->servo_cmd;
-	hservo->hservo_cmd.servo_cmd_angle = hservo_cmd->servo_cmd_angle;
+	hservo->hservo_cmd.servo_cmd = pservo_cmd->servo_cmd;
+	hservo->hservo_cmd.servo_cmd_angle = pservo_cmd->servo_cmd_angle;
 }
 
 /*
@@ -36,6 +36,8 @@ void servo_motor_process(Servo_HandleTypeDef* hservo){
 			if(hservo->hservo_cmd.servo_cmd == SERVO_CMD_START){
 				hw_motor_start(hservo->servo_tim_ch);
 				hservo->servo_state = SERVO_HOLDING;
+				hw_motor_set_angle(hservo->servo_tim_ch,hservo->hservo_cmd.servo_cmd_angle);
+				hservo->servo_angle = hservo->hservo_cmd.servo_cmd_angle;
 			}
 			break;
 		case SERVO_HOLDING:

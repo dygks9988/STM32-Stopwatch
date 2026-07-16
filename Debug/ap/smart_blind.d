@@ -1,17 +1,8 @@
-rtos/uart_cmd_task.o: ../rtos/uart_cmd_task.c ../rtos/rtos_task.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
- ../Core/Inc/FreeRTOSConfig.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/uart_cmd.h \
- C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/uart.h \
- ../Core/Inc/usart.h ../Core/Inc/main.h \
+ap/smart_blind.o: ../ap/smart_blind.c ../ap/smart_blind.h \
+ C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h \
+ C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h \
+ C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h \
+ ../Core/Inc/tim.h ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -39,32 +30,12 @@ rtos/uart_cmd_task.o: ../rtos/uart_cmd_task.c ../rtos/rtos_task.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/stopwatch.h \
- C:/stm_workspace_1.16.1/stm32f411_RE/hw/hw.h \
- C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/led.h ../Core/Inc/gpio.h \
- C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h \
- ../Core/Inc/tim.h \
- C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/button.h \
- C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h \
- C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h \
- C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h \
- C:/stm_workspace_1.16.1/stm32f411_RE/ap/smart_blind.h \
- C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h
-../rtos/rtos_task.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
-../Core/Inc/FreeRTOSConfig.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
-../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
-C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/uart_cmd.h:
-C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/uart.h:
-../Core/Inc/usart.h:
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+../ap/smart_blind.h:
+C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h:
+C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h:
+C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h:
+../Core/Inc/tim.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -94,15 +65,3 @@ C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/uart.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/stopwatch.h:
-C:/stm_workspace_1.16.1/stm32f411_RE/hw/hw.h:
-C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/led.h:
-../Core/Inc/gpio.h:
-C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h:
-../Core/Inc/tim.h:
-C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/button.h:
-C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h:
-C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h:
-C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h:
-C:/stm_workspace_1.16.1/stm32f411_RE/ap/smart_blind.h:
-C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h:

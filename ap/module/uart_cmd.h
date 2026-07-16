@@ -11,6 +11,7 @@
 #include "uart.h"
 #include "stopwatch.h"
 #include "servo_motor.h"
+#include "smart_blind.h"
 
 #define MAX_CMD_CH 1
 
@@ -18,7 +19,8 @@
 typedef enum{
 	NONE_CMD_CH,
 	SW_CMD_CH,
-	SERVO_CMD_CH
+	SERVO_CMD_CH,
+	BLIND_CMD_CH
 }Uart_Cmd_ch; //
 
 typedef struct{

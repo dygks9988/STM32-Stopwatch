@@ -15,6 +15,8 @@ void uart_cmd_task(){
 	uint8_t uart_rx_data;
 	Servo_Cmd_PacketTypeDef pservo;
 
+
+
 	for (;;){
 		if(xQueueReceive(UartRxQueueHandle, &uart_rx_data, portMAX_DELAY)==pdPASS)
 		{
@@ -26,13 +28,17 @@ void uart_cmd_task(){
 						break;
 					case SW_CMD_CH:
 						xQueueSend(SW_Cmd_QueueHandle,&huart_cmd.cmd,(TickType_t )10);
+						huart_cmd.target_ch = NONE_CMD_CH;
 						break;
 					case SERVO_CMD_CH:
 						pservo.servo_cmd = huart_cmd.cmd;
 						pservo.servo_cmd_angle = huart_cmd.value;
 						xQueueSend(Servo_Cmd_QueueHandle,&pservo,(TickType_t )10);
+						huart_cmd.target_ch = NONE_CMD_CH;
 						break;
-
+					case BLIND_CMD_CH:
+						xQueueSend(SmartBlind_Cmd_QueueHandle,&huart_cmd.cmd,(TickType_t )10);
+						huart_cmd.target_ch = NONE_CMD_CH;
 					}
 			}
 		}

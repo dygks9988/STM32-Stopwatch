@@ -1,4 +1,4 @@
-rtos/servo_test.o: ../rtos/servo_test.c ../rtos/rtos_task.h \
+rtos/smart_blind_task.o: ../rtos/smart_blind_task.c ../rtos/rtos_task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
@@ -9,6 +9,7 @@ rtos/servo_test.o: ../rtos/servo_test.c ../rtos/rtos_task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
+ C:/stm_workspace_1.16.1/stm32f411_RE/ap/smart_blind.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h \
@@ -52,6 +53,7 @@ rtos/servo_test.o: ../rtos/servo_test.c ../rtos/rtos_task.h \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
+C:/stm_workspace_1.16.1/stm32f411_RE/ap/smart_blind.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h:

@@ -36,7 +36,9 @@ ap/module/uart_cmd.o: ../ap/module/uart_cmd.c ../ap/module/uart_cmd.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/button.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h \
- ../ap/module/servo_motor.h
+ ../ap/module/servo_motor.h \
+ C:/stm_workspace_1.16.1/stm32f411_RE/ap/smart_blind.h \
+ C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h
 ../ap/module/uart_cmd.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/uart.h:
 ../Core/Inc/usart.h:
@@ -79,3 +81,5 @@ C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/button.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h:
 ../ap/module/servo_motor.h:
+C:/stm_workspace_1.16.1/stm32f411_RE/ap/smart_blind.h:
+C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h:

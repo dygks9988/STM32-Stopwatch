@@ -70,6 +70,13 @@ const osThreadAttr_t myTask03_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityHigh,
 };
+/* Definitions for myTask04 */
+osThreadId_t myTask04Handle;
+const osThreadAttr_t myTask04_attributes = {
+  .name = "myTask04",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
 /* Definitions for myQueue01 */
 osMessageQueueId_t myQueue01Handle;
 const osMessageQueueAttr_t myQueue01_attributes = {
@@ -84,6 +91,7 @@ const osMessageQueueAttr_t myQueue01_attributes = {
 void StartDefaultTask(void *argument);
 void uart(void *argument);
 void StartTask03(void *argument);
+void StartTask04(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -126,6 +134,9 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of myTask03 */
   myTask03Handle = osThreadNew(StartTask03, NULL, &myTask03_attributes);
+
+  /* creation of myTask04 */
+  myTask04Handle = osThreadNew(StartTask04, NULL, &myTask04_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -186,10 +197,27 @@ void StartTask03(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	  servo_test_task();
-
+	  servo_motor_task();
   }
   /* USER CODE END StartTask03 */
+}
+
+/* USER CODE BEGIN Header_StartTask04 */
+/**
+* @brief Function implementing the myTask04 thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTask04 */
+void StartTask04(void *argument)
+{
+  /* USER CODE BEGIN StartTask04 */
+  /* Infinite loop */
+  for(;;)
+  {
+	  smart_blind_task();
+  }
+  /* USER CODE END StartTask04 */
 }
 
 /* Private application code --------------------------------------------------*/

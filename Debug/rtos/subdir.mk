@@ -7,21 +7,21 @@
 C_SRCS += \
 ../rtos/motor_task.c \
 ../rtos/rtos_task.c \
-../rtos/servo_test.c \
+../rtos/smart_blind_task.c \
 ../rtos/stopwatch_task.c \
 ../rtos/uart_cmd_task.c 
 
 OBJS += \
 ./rtos/motor_task.o \
 ./rtos/rtos_task.o \
-./rtos/servo_test.o \
+./rtos/smart_blind_task.o \
 ./rtos/stopwatch_task.o \
 ./rtos/uart_cmd_task.o 
 
 C_DEPS += \
 ./rtos/motor_task.d \
 ./rtos/rtos_task.d \
-./rtos/servo_test.d \
+./rtos/smart_blind_task.d \
 ./rtos/stopwatch_task.d \
 ./rtos/uart_cmd_task.d 
 
@@ -33,7 +33,7 @@ rtos/%.o rtos/%.su rtos/%.cyclo: ../rtos/%.c rtos/subdir.mk
 clean: clean-rtos
 
 clean-rtos:
-	-$(RM) ./rtos/motor_task.cyclo ./rtos/motor_task.d ./rtos/motor_task.o ./rtos/motor_task.su ./rtos/rtos_task.cyclo ./rtos/rtos_task.d ./rtos/rtos_task.o ./rtos/rtos_task.su ./rtos/servo_test.cyclo ./rtos/servo_test.d ./rtos/servo_test.o ./rtos/servo_test.su ./rtos/stopwatch_task.cyclo ./rtos/stopwatch_task.d ./rtos/stopwatch_task.o ./rtos/stopwatch_task.su ./rtos/uart_cmd_task.cyclo ./rtos/uart_cmd_task.d ./rtos/uart_cmd_task.o ./rtos/uart_cmd_task.su
+	-$(RM) ./rtos/motor_task.cyclo ./rtos/motor_task.d ./rtos/motor_task.o ./rtos/motor_task.su ./rtos/rtos_task.cyclo ./rtos/rtos_task.d ./rtos/rtos_task.o ./rtos/rtos_task.su ./rtos/smart_blind_task.cyclo ./rtos/smart_blind_task.d ./rtos/smart_blind_task.o ./rtos/smart_blind_task.su ./rtos/stopwatch_task.cyclo ./rtos/stopwatch_task.d ./rtos/stopwatch_task.o ./rtos/stopwatch_task.su ./rtos/uart_cmd_task.cyclo ./rtos/uart_cmd_task.d ./rtos/uart_cmd_task.o ./rtos/uart_cmd_task.su
 
 .PHONY: clean-rtos
 

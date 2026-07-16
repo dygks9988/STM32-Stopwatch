@@ -5,13 +5,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../ap/ap.c 
+../ap/ap.c \
+../ap/smart_blind.c 
 
 OBJS += \
-./ap/ap.o 
+./ap/ap.o \
+./ap/smart_blind.o 
 
 C_DEPS += \
-./ap/ap.d 
+./ap/ap.d \
+./ap/smart_blind.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -21,7 +24,7 @@ ap/%.o ap/%.su ap/%.cyclo: ../ap/%.c ap/subdir.mk
 clean: clean-ap
 
 clean-ap:
-	-$(RM) ./ap/ap.cyclo ./ap/ap.d ./ap/ap.o ./ap/ap.su
+	-$(RM) ./ap/ap.cyclo ./ap/ap.d ./ap/ap.o ./ap/ap.su ./ap/smart_blind.cyclo ./ap/smart_blind.d ./ap/smart_blind.o ./ap/smart_blind.su
 
 .PHONY: clean-ap
 

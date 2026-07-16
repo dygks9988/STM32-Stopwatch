@@ -49,6 +49,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/stopwatch.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h \
+ C:/stm_workspace_1.16.1/stm32f411_RE/ap/smart_blind.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/rtos/rtos_task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
@@ -106,6 +107,7 @@ C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/stopwatch.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h:
+C:/stm_workspace_1.16.1/stm32f411_RE/ap/smart_blind.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/rtos/rtos_task.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:

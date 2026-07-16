@@ -10,12 +10,14 @@
 #include "servo_motor.h"
 
 #define UART_RX_QUEUE_LENGTH  30
-#define SW_CMD_QUEUE_LENGTH 20
+#define SW_CMD_QUEUE_LENGTH 30
 #define SERVO_CMD_QUEUE_LENGTH 30
+#define SMART_BLIND_CMD_QUEUE_LENGTH 30
 
 QueueHandle_t UartRxQueueHandle;
 QueueHandle_t SW_Cmd_QueueHandle;
 QueueHandle_t Servo_Cmd_QueueHandle;
+QueueHandle_t SmartBlind_Cmd_QueueHandle;
 
 void rtos_init(void)
 {
@@ -32,5 +34,8 @@ void rtos_init(void)
 	if(SW_Cmd_QueueHandle == NULL){
 			Error_Handler();
 	}
-
+	SmartBlind_Cmd_QueueHandle = xQueueCreate(SMART_BLIND_CMD_QUEUE_LENGTH,sizeof(uint8_t));
+	if(SmartBlind_Cmd_QueueHandle == NULL){
+			Error_Handler();
+	}
 }
