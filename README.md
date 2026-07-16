@@ -108,6 +108,11 @@ UART_RX_ISR > Uart_Rx_Queue > uart_cmd_task > uart_cmd_process(parser) > Sw_Cmd_
 - 현재 서보 모터의 명령어를 처리하는 로직을 추가 했습니다.
 - 서보 모터 디바이스 구조화하여 TASK에서 여러개의 모터를 각각의 객체 처럼 다루는 방식으로 설계되었습니다.
 - UART_CMD가 SERVO_TASK로 전달되면 Process를 실행하여 명령어를 처리하는 로직을 실행하는 구조로 설계중에 있습니다.
-- 현재 명령어 처리 로직을 동작 검증하지 못했습니다
-- Lojic Analazer를 통해 타이머 20ms 주기의 신호와 SERVO PWM  1ms / 1.5ms / 2ms High pulse 신호를 측정하여 동작 검증할 예정입니다
+
+- 현재 servo_motor 모듈이 set_servo_motor_cmd로 명령과 value 받고 servo_motor_process를 실행해 CMD를 기반으로 동작하는 것을 검증했습니다.
+- 로직 아날라이저를 이용해 정확한 PWM의 20ms 주기의 신호와 1ms / 1.5ms / 2ms High Pulse 신호를 측정하여 동작을 검증 했습니다.
+- 현재 uint8 타입의 angle에 256이상의 값이 입력되었을 때 1byteoverflow가 발생하여 ccr에 에러값이 입력되는 것을 확인했습니다.
+- 이를 해결하기 위해 파서에서 angle의 값이 180도 초과인 비정상적인 명령이 입력 되었을때 명령을 전송 하지 않는 예외처리를 할 예정입니다 
+
+
 
