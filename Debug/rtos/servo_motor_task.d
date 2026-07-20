@@ -1,4 +1,4 @@
-rtos/motor_task.o: ../rtos/motor_task.c ../rtos/rtos_task.h \
+rtos/servo_motor_task.o: ../rtos/servo_motor_task.c ../rtos/rtos_task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \

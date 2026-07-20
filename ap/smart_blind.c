@@ -11,10 +11,19 @@
 #define BLIND_HALF_ANGLE  90
 #define BLIND_CLOSE_ANGLE 180
 
+
+
 void blind_init(Blind_StateTypeDef* blind_state){
 	if(blind_state == NULL)return;
 	*blind_state = BLIND_NONE;
 }
+
+/*
+ * blind_process
+ * blind_task에서 받은 명령을 수행한다.
+ *
+ *
+ */
 
 bool blind_process(
 Blind_StateTypeDef* blind_state,

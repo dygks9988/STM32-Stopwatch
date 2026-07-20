@@ -7,7 +7,7 @@
 
 #include "hw_motor.h"
 #define MAX_ANGLE 180
-#define SERVO_MIN_CCR 1000
+#define SERVO_MIN_CCR 600
 
 
 
@@ -30,7 +30,7 @@ void hw_motor_stop(uint8_t ch){
 static uint16_t angle_to_ccr(uint8_t angle){
 	if(angle > MAX_ANGLE)angle = MAX_ANGLE;
 
-	return ((50 * angle)/9) + SERVO_MIN_CCR; // 각도 1당 CCR값 * 각도 + SERVO_MIN_CCR
+	return ((uint16_t)angle*10) + SERVO_MIN_CCR; // 각도 1당 CCR값 * 각도 + SERVO_MIN_CCR
 }
 
 void hw_motor_set_angle(uint8_t ch,uint8_t angle){
