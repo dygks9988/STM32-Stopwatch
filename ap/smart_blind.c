@@ -8,8 +8,8 @@
 #include "smart_blind.h"
 
 #define BLIND_OPEN_ANGLE  0
-#define BLIND_HALF_ANGLE  90
-#define BLIND_CLOSE_ANGLE 180
+#define BLIND_HALF_ANGLE  45
+#define BLIND_CLOSE_ANGLE 90
 
 
 
